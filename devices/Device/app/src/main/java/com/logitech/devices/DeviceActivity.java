@@ -181,7 +181,12 @@ public class DeviceActivity extends AppCompatActivity implements SwipeRefreshLay
      */
     @Override
     public void onFailure() {
-        swipeRefreshLayout.setRefreshing(false);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     /**
